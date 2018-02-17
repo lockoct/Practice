@@ -10,10 +10,22 @@ public class QueueTest {
 		myQueue.add(4);
 		myQueue.add(1);
 		myQueue.add(0);
-		myQueue.add(7);
 		
 		myQueue.printElement();
-		System.out.println("   ");
+		
+		System.out.println("=================================");
+		
+		myQueue.remove();
+		myQueue.remove();
+		
+		myQueue.printElement();
+
+		System.out.println("=================================");
+		
+		myQueue.add(8);
+		myQueue.add(9);
+		
+		myQueue.printElement();
 	}
 
 }

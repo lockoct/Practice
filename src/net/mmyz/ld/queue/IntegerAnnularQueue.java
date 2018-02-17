@@ -42,7 +42,7 @@ public class IntegerAnnularQueue {
 	}
 	
 	public boolean isEmpty() {
-		if(head == tail) {
+		if(length == 0) {
 			return true;			
 		}else {
 			return false;
@@ -57,8 +57,10 @@ public class IntegerAnnularQueue {
 		}
 	}
 	public void printElement() {
-		for (int i = head; i < head+element.length; i++) {
-			System.out.println(element[i%element.length]);
+		for (int i = head; i < head+length;i++) {
+			System.out.print(element[i%capacity]+"\t");
 		}
+		System.out.println();
+
 	}
 }

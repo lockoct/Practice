@@ -12,6 +12,7 @@ public class IntegerAnnularQueue {
 		this.element = new int[capacity];
 	}
 	
+	//为队列添加元素
 	public boolean add(int element) {
 		if(isFull()) {
 			System.out.println("队列已满");
@@ -25,6 +26,7 @@ public class IntegerAnnularQueue {
 		}
 	}
 	
+	//删除队列首元素
 	public boolean remove() {
 		if(isEmpty()) {
 			System.out.println("队列中已没有元素");
@@ -37,10 +39,12 @@ public class IntegerAnnularQueue {
 		}
 	}
 	
+	//获取队列长度
 	public int size() {
 		return length;
 	}
 	
+	//判断队列是否为空
 	public boolean isEmpty() {
 		if(length == 0) {
 			return true;			
@@ -49,6 +53,7 @@ public class IntegerAnnularQueue {
 		}
 	}
 	
+	//判断队列是否为满
 	public boolean isFull() {
 		if(length == capacity) {
 			return true;			
@@ -56,11 +61,23 @@ public class IntegerAnnularQueue {
 			return false;
 		}
 	}
+	
+	//遍历队列元素
 	public void printElement() {
-		for (int i = head; i < head+length;i++) {
-			System.out.print(element[i%capacity]+"\t");
+		if (isEmpty()) {
+			System.out.println("队列中没有元素");
+		}else {
+			for (int i = head; i < head+length;i++) {
+				System.out.print(element[i%capacity]+"\t");
+			}
+			System.out.println();
 		}
-		System.out.println();
-
+	}
+	
+	//清空队列元素
+	public void cleanQueue() {
+		this.head = 0;
+		this.tail = 0;
+		this.length = 0;
 	}
 }

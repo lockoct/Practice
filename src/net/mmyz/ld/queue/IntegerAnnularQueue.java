@@ -9,7 +9,7 @@ public class IntegerAnnularQueue {
 	
 	public IntegerAnnularQueue(int capacity) {
 		this.capacity = capacity;
-		this.element = new int[capacity];
+		element = new int[capacity];
 	}
 	
 	//为队列添加元素

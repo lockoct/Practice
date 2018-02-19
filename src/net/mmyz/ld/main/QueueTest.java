@@ -1,11 +1,11 @@
 package net.mmyz.ld.main;
 
-import net.mmyz.ld.queue.IntegerAnnularQueue;
+import net.mmyz.ld.queue.AnnularQueue;
 
 public class QueueTest {
 
 	public static void main(String[] args) {
-		IntegerAnnularQueue myQueue = new IntegerAnnularQueue(4);
+		AnnularQueue<Integer> myQueue = new AnnularQueue<Integer>(4);
 		myQueue.add(5);
 		myQueue.add(4);
 		myQueue.add(1);

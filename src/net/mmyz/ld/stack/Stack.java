@@ -1,14 +1,16 @@
 package net.mmyz.ld.stack;
 
-public class CharStack {
+import java.util.ArrayList;
+
+public class Stack<T>{
 
 	private int capacity;
 	private int top = 0;
-	private char[] element;
-
-	public CharStack(int capacity) {
+	private ArrayList<T> element;
+	
+	public Stack(int capacity) {
 		this.capacity = capacity;
-		element = new char[capacity];
+		element = new ArrayList<>(capacity);
 	}
 	
 	//获取栈大小
@@ -17,12 +19,12 @@ public class CharStack {
 	}
 	
 	//入栈
-	public boolean push(char c) {
+	public boolean push(T c) {
 		if(isFull()) {
 			System.out.println("栈已满");
 			return false;
 		}
-		element[top] = c;
+		element.add(c);
 		top++;
 		return true;
 	}
@@ -33,6 +35,7 @@ public class CharStack {
 			System.out.println("栈中已经没有元素");
 			return false;
 		}
+		element.remove(top-1);
 		top--;
 		return true;
 	}
@@ -65,12 +68,12 @@ public class CharStack {
 		}else {
 			if(isFromButtom) {
 				for (int i = 0; i < top; i++) {
-					System.out.print(element[i]+"\t");
+					System.out.print(element.get(i)+"\t");
 				}
 				System.out.println();							
 			}else {
 				for (int i = top-1; i >= 0; i--) {
-					System.out.print(element[i]+"\t");
+					System.out.print(element.get(i)+"\t");
 				}
 				System.out.println();							
 			}

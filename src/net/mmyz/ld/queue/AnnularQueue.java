@@ -1,24 +1,26 @@
 package net.mmyz.ld.queue;
 
-public class IntegerAnnularQueue {
+import java.util.ArrayList;
+
+public class AnnularQueue<T> {
 	private int capacity;
 	private int	length = 0;
 	private int head = 0;
 	private int tail = 0;
-	private int[] element;
+	private ArrayList<T> element;
 	
-	public IntegerAnnularQueue(int capacity) {
+	public AnnularQueue(int capacity) {
 		this.capacity = capacity;
-		element = new int[capacity];
+		element = new ArrayList<>(capacity);
 	}
 	
 	//为队列添加元素
-	public boolean add(int element) {
+	public boolean add(T element) {
 		if(isFull()) {
 			System.out.println("队列已满");
 			return false;
 		}else {
-			this.element[tail] = element;
+			this.element.add(element);
 			tail++;
 			length++;
 			tail = tail % capacity;
@@ -68,7 +70,7 @@ public class IntegerAnnularQueue {
 			System.out.println("队列中没有元素");
 		}else {
 			for (int i = head; i < head+length;i++) {
-				System.out.print(element[i%capacity]+"\t");
+				System.out.print(element.get(i%capacity)+"\t");
 			}
 			System.out.println();
 		}

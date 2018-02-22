@@ -40,7 +40,7 @@ public class Stack<T>{
 		return true;
 	}
 	
-	//ÅÐ¿Õº¯Êý
+	//ÅÐÂúº¯Êý
 	public boolean isFull() {
 		if(top == capacity){
 			return true;
@@ -48,7 +48,7 @@ public class Stack<T>{
 		return false;
 	}
 	
-	//ÅÐÂúº¯Êý
+	//ÅÐ¿Õº¯Êý
 	public boolean isEmpty() {
 		if(top == 0){
 			return true;

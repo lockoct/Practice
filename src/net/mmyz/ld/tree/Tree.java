@@ -5,12 +5,13 @@ public class Tree {
 	private int[] tree;
 	private int capacity;
 	
-	public Tree(int capacity) {
+	public Tree(int capacity,int firstNodeValue) {
 		this.capacity = capacity;
 		tree = new int[capacity];
 		for (int i = 0; i < tree.length; i++) {
 			tree[i] = 0;
 		}
+		tree[0] = firstNodeValue;
 	}
 	public int searchNode(int nodeIndex) {
 		if(nodeIndex < 0 || nodeIndex >= capacity) {
@@ -32,14 +33,14 @@ public class Tree {
 		}
 		//判断插入是否为左节点
 		if(direction == 0) {
-			if(tree[nodeIndex*2+1] != 0 || nodeIndex*2+1 >= capacity) {
+			if(nodeIndex*2+1 < capacity && tree[nodeIndex*2+1] == 0) {
 				tree[nodeIndex*2+1] = value;
 				return true;	
 			}
 			return false;	
 		//判断插入是否为右节点
 		}else if(direction == 1) {
-			if(tree[nodeIndex*2+2] != 0 || nodeIndex*2+2 >= capacity) {
+			if(nodeIndex*2+2 < capacity && tree[nodeIndex*2+2] == 0) {
 				tree[nodeIndex*2+2] = value;
 				return true;			
 			}
@@ -63,15 +64,30 @@ public class Tree {
 	
 	public void printTree() {
 		if(capacity == 1) {
-			System.out.println("\t"+tree[0]);
+			System.out.println("  "+tree[0]);
 		}
-		for(int i = 1;i<=(capacity+1)*capacity/2;i++) {
-//			for (int j = 0; j < i; j++) {
-//				System.out.print("\t");
-//			}
-//			for (int j = 0; j < i; j++) {
-//				System.out.print(tree[j]+"\t");
-//			}
+		
+		int row = 2;
+		while(true) {
+			if(Math.pow(2, row)-1 >= capacity) {
+				break;
+			}
+			row++;
+		}
+		
+		for(int j = 1;j<=row;j++) {
+			for (int k = row-j+1; k > 0; k--) {
+				System.out.print("  ");
+			}
+			for (int k = (int)Math.pow(2, j-1)-1; k < Math.pow(2, j)-1; k++) {
+				if(k >= capacity) {
+					break;
+				}
+				System.out.print(tree[k]);
+				for (int l = row-j+1; l > 0; l--) {
+					System.out.print(" ");
+				}
+			}
 			System.out.println();
 		}
 	}

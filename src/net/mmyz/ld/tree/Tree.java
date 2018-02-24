@@ -60,7 +60,13 @@ public class Tree {
 		deleteNode(nodeIndex*2+1);
 		deleteNode(nodeIndex*2+2);
 		return true;
-	}
+	}	
+	
+	/*
+	 *树状图缩进公式		l=2^(row-j+1)-3 
+	 *树状图节点间隔公式	d=2^(row-j+2)-3
+	 *灵感来自于 http://blog.csdn.net/collonn/article/details/18529835
+	 */
 	
 	public void printTree() {
 		if(capacity == 1) {
@@ -76,15 +82,18 @@ public class Tree {
 		}
 		
 		for(int j = 1;j<=row;j++) {
-			for (int k = row-j+1; k > 0; k--) {
-				System.out.print("  ");
+			for (int l = (int)Math.pow(2, row-j+1)-3; l >=0; l--) {
+				System.out.print(" ");
 			}
 			for (int k = (int)Math.pow(2, j-1)-1; k < Math.pow(2, j)-1; k++) {
 				if(k >= capacity) {
 					break;
 				}
+				if(tree[k]<10) {
+					System.out.print("0");					
+				}
 				System.out.print(tree[k]);
-				for (int l = row-j+1; l > 0; l--) {
+				for (int l = (int)Math.pow(2, row-j+2)-3; l >=0; l--) {
 					System.out.print(" ");
 				}
 			}

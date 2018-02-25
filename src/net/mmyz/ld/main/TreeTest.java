@@ -5,7 +5,7 @@ import net.mmyz.ld.tree.Tree;
 public class TreeTest {
 
 	public static void main(String[] args) {
-		Tree myTree = new Tree(40,50);
+		Tree myTree = new Tree(33,50);
 		myTree.addNode(0, 0, 30);
 		myTree.addNode(0, 1, 80);
 		myTree.addNode(1, 0, 10);
@@ -38,6 +38,13 @@ public class TreeTest {
 		myTree.addNode(14, 1, 33);
 		myTree.addNode(15, 0, 55);
 		myTree.addNode(15, 1, 66);
+		
+		
+		myTree.printTree();
+		
+		System.out.println("=====================================================================================================================================");
+		
+		myTree.deleteNode(3);
 		
 		myTree.printTree();
 	}

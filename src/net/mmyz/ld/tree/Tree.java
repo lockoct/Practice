@@ -13,6 +13,8 @@ public class Tree {
 		}
 		tree[0] = firstNodeValue;
 	}
+	
+	
 	public int searchNode(int nodeIndex) {
 		if(nodeIndex < 0 || nodeIndex >= capacity) {
 			return -1;
@@ -22,6 +24,7 @@ public class Tree {
 		}
 		return tree[nodeIndex];
 	}
+	
 	
 	public boolean addNode(int nodeIndex,int direction,int value) {
 		if(nodeIndex < 0 || nodeIndex >= capacity) {
@@ -49,11 +52,12 @@ public class Tree {
 		return true;
 	}
 	
+	
 	public boolean deleteNode(int nodeIndex) {
 		if(nodeIndex < 0 || nodeIndex >= capacity) {
 			return false;
 		}
-		if(tree[nodeIndex] != 0) {
+		if(tree[nodeIndex] == 0) {
 			return false;
 		}
 		tree[nodeIndex] = 0;
@@ -71,33 +75,35 @@ public class Tree {
 	public void printTree() {
 		if(capacity == 1) {
 			System.out.println("  "+tree[0]);
-		}
-		
-		int row = 2;
-		while(true) {
-			if(Math.pow(2, row)-1 >= capacity) {
-				break;
-			}
-			row++;
-		}
-		
-		for(int j = 1;j<=row;j++) {
-			for (int l = (int)Math.pow(2, row-j+1)-3; l >=0; l--) {
-				System.out.print(" ");
-			}
-			for (int k = (int)Math.pow(2, j-1)-1; k < Math.pow(2, j)-1; k++) {
-				if(k >= capacity) {
+		}else {
+			
+			int row = 2;
+			while(true) {
+				if(Math.pow(2, row)-1 >= capacity) {
 					break;
 				}
-				if(tree[k]<10) {
-					System.out.print("0");					
-				}
-				System.out.print(tree[k]);
-				for (int l = (int)Math.pow(2, row-j+2)-3; l >=0; l--) {
+				row++;
+			}
+			
+			for(int j = 1;j<=row;j++) {
+				for (int l = (int)Math.pow(2, row-j+1)-3; l >=0; l--) {
 					System.out.print(" ");
 				}
+				for (int k = (int)Math.pow(2, j-1)-1; k < Math.pow(2, j)-1; k++) {
+					if(k >= capacity) {
+						break;
+					}
+					if(tree[k]<10) {
+						System.out.print("0");					
+					}
+					System.out.print(tree[k]);
+					for (int l = (int)Math.pow(2, row-j+2)-3; l >=0; l--) {
+						System.out.print(" ");
+					}
+				}
+				System.out.println();
 			}
-			System.out.println();
 		}
+		
 	}
 }
